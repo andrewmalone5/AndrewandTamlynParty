@@ -198,11 +198,49 @@ img {
   }
 }
 
-@media (max-width: 480px) {
-  .event-details {
-    gap: 16px;
+@media (max-width: 768px) {
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    overflow: hidden;
+    padding: clamp(72px, 16vh, 160px) 24px clamp(40px, 8vh, 80px);
   }
 
+  .hero-inner {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+  }
+
+  .hero-image {
+    position: absolute;
+    inset: 0;
+    margin: 0;
+    z-index: 0;
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: visible;
+  }
+
+  .hero-image img {
+    width: 115%;
+    max-width: 115%;
+    height: auto;
+    opacity: 0.3;
+  }
+
+  .event-details {
+    gap: clamp(20px, 3.5vh, 32px);
+  }
+
+  .divider {
+    width: 60%;
+  }
+}
+
+@media (max-width: 480px) {
   .event-location {
     font-size: 12.5px;
     letter-spacing: 0.16em;
