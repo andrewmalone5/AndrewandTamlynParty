@@ -225,10 +225,10 @@ img {
   }
 
   .hero-image img {
-    width: 115%;
-    max-width: 115%;
-    height: auto;
-    opacity: 0.3;
+    height: 95vh;
+    width: auto;
+    max-width: none;
+    opacity: 0.4;
   }
 
   .event-details {
