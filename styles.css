@@ -198,11 +198,49 @@ img {
   }
 }
 
-@media (max-width: 480px) {
-  .event-details {
-    gap: 16px;
+@media (max-width: 768px) {
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    overflow: hidden;
+    padding: clamp(72px, 16vh, 160px) 24px clamp(40px, 8vh, 80px);
   }
 
+  .hero-inner {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+  }
+
+  .hero-image {
+    position: absolute;
+    inset: 0;
+    margin: 0;
+    z-index: 0;
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: visible;
+  }
+
+  .hero-image img {
+    height: 95vh;
+    width: auto;
+    max-width: none;
+    opacity: 0.4;
+  }
+
+  .event-details {
+    gap: clamp(20px, 3.5vh, 32px);
+  }
+
+  .divider {
+    width: 60%;
+  }
+}
+
+@media (max-width: 480px) {
   .event-location {
     font-size: 12.5px;
     letter-spacing: 0.16em;
@@ -316,24 +354,29 @@ img {
   }
 }
 
+/* Mobile gallery: separate 2-column structure with 5 photos on the
+   narrow left and 6 on the wider right. Hidden on desktop. */
+.gallery-mobile {
+  display: none;
+}
+
 @media (max-width: 768px) {
-  /* Masonry layout: photos flow into 2 columns with no empty gaps.
-     display: contents on .g-col flattens the wrapper divs so all
-     photos become direct children of the masonry container. */
   .gallery {
-    display: block;
-    column-count: 2;
-    column-gap: 10px;
+    display: none;
   }
 
-  .g-col {
-    display: contents;
+  .gallery-mobile {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 10px;
+    align-items: start;
   }
 
-  .photo {
-    break-inside: avoid;
-    margin: 0 0 10px;
-    width: 100%;
+  .m-col {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    min-width: 0;
   }
 }
 
