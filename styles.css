@@ -381,7 +381,9 @@ img {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 10px;
-    align-items: start;
+    /* Shorter column (left, 5 photos) centers vertically against the
+       taller right column (6 photos) — midpoints align. */
+    align-items: center;
   }
 
   .m-col {
