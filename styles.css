@@ -317,22 +317,32 @@ img {
 }
 
 @media (max-width: 768px) {
-  /* Masonry layout: photos flow into 2 columns with no empty gaps.
-     display: contents on .g-col flattens the wrapper divs so all
-     photos become direct children of the masonry container. */
+  /* Two visual columns where g-col-1 + g-col-3 stack on the left and
+     g-col-2 spans the right. align-items: center vertically centers
+     whichever side is shorter, so midpoints align and tops/bottoms
+     stagger naturally — the scrapbook feel. */
   .gallery {
-    display: block;
-    column-count: 2;
-    column-gap: 10px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+    align-items: center;
+    gap: 10px;
   }
 
   .g-col {
-    display: contents;
+    padding-top: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
   }
 
+  .g-col-1 { grid-column: 1; grid-row: 1; }
+  .g-col-3 { grid-column: 1; grid-row: 2; }
+  .g-col-2 { grid-column: 2; grid-row: 1 / span 2; }
+
   .photo {
-    break-inside: avoid;
-    margin: 0 0 10px;
+    margin: 0;
     width: 100%;
   }
 }
