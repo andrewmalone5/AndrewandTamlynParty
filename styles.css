@@ -330,3 +330,240 @@ img {
     flex: 1 1 calc(50% - 6px);
   }
 }
+
+/* ─────────── Party Details ─────────── */
+
+.party-details {
+  background: var(--color-red);
+  padding: clamp(48px, 6vw, 96px) clamp(24px, 6vw, 96px);
+}
+
+.pd-inner {
+  max-width: 1128px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(48px, 6vw, 80px);
+}
+
+/* Shared block label / headline / summary */
+.block-label {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 14.4px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-cream);
+}
+
+.block-headline {
+  margin: 0;
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: clamp(1.75rem, 3vw, 36px);
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: var(--color-cream);
+}
+
+.block-summary {
+  margin: 0;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: clamp(1rem, 1.4vw, 18px);
+  line-height: 1.45;
+  color: var(--color-cream);
+}
+
+.block-intro {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+/* Venue block */
+.venue-block {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: start;
+}
+
+.venue-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.venue-title {
+  margin: 24px 0 0;
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: clamp(2rem, 3.5vw, 48px);
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  color: var(--color-cream);
+}
+
+.venue-divider {
+  margin: 24px 0;
+}
+
+.venue-description {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.55;
+  color: var(--color-cream);
+}
+
+.venue-description p {
+  margin: 0;
+}
+
+.venue-images {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  align-items: stretch;
+}
+
+.venue-image {
+  margin: 0;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.venue-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.venue-image-main {
+  aspect-ratio: 264 / 483;
+}
+
+.venue-image-column {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.venue-image-column .venue-image {
+  aspect-ratio: 264 / 235.5;
+  flex: 1;
+}
+
+/* Cards (shared) */
+.card {
+  border: 1px solid rgba(242, 231, 210, 0.4);
+  border-radius: 16px;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  background: transparent;
+}
+
+/* Running Order schedule */
+.schedule-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+.schedule-card {
+  gap: 12px;
+}
+
+.schedule-time {
+  margin: 0;
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: clamp(1.5rem, 2.6vw, 32px);
+  line-height: 1;
+  letter-spacing: -0.01em;
+  color: var(--color-cream);
+}
+
+.card-label {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 12.5px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-cream);
+}
+
+.card-body {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--color-cream);
+}
+
+/* For the Day cards */
+.ftd-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.info-card {
+  gap: 12px;
+}
+
+.weather-card {
+  gap: 8px;
+}
+
+.weather-date {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: 15px;
+  line-height: 1.4;
+  color: var(--color-cream);
+}
+
+.weather-temp {
+  margin: 8px 0 16px;
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: clamp(2.5rem, 5vw, 56px);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--color-cream);
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .venue-block {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .schedule-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .ftd-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .schedule-grid {
+    grid-template-columns: 1fr;
+  }
+  .card {
+    padding: 24px;
+  }
+}
