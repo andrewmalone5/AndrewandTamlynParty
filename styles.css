@@ -208,3 +208,130 @@ img {
     letter-spacing: 0.16em;
   }
 }
+
+/* ─────────── Gallery + Story ─────────── */
+
+.gallery-story {
+  background: var(--color-red);
+  padding: clamp(48px, 6vw, 96px) clamp(24px, 6vw, 96px);
+}
+
+.gs-inner {
+  max-width: 1128px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 624fr 456fr;
+  gap: 48px;
+  align-items: center;
+}
+
+/* Gallery — 3 staggered columns */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.g-col {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.g-col-1 { padding-top: 106px; }
+.g-col-2 { padding-top: 0; }
+.g-col-3 { padding-top: 59px; }
+
+.photo {
+  margin: 0;
+  overflow: hidden;
+  border-radius: 4px;
+  background: rgba(242, 231, 210, 0.08);
+}
+
+.photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.ar-4x3 { aspect-ratio: 4 / 3; }
+.ar-1x1 { aspect-ratio: 1 / 1; }
+.ar-3x4 { aspect-ratio: 3 / 4; }
+
+/* Story */
+.story {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  color: var(--color-cream);
+}
+
+.story-label {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 14.4px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-cream);
+}
+
+.story-summary {
+  margin: 0;
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: clamp(1.5rem, 2.6vw, 32px);
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  color: var(--color-cream);
+}
+
+.story-content {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.65;
+  color: var(--color-cream);
+}
+
+.story-content p {
+  margin: 0;
+}
+
+/* Responsive — tablet: gallery above story */
+@media (max-width: 900px) {
+  .gs-inner {
+    grid-template-columns: 1fr;
+    gap: 48px;
+    align-items: start;
+  }
+
+  /* Reduce stagger on tablet/mobile to keep things tidy */
+  .g-col-1,
+  .g-col-3 {
+    padding-top: 0;
+  }
+
+  .story {
+    text-align: left;
+  }
+}
+
+@media (max-width: 480px) {
+  .gallery {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  /* Third column wraps below — keep all photos visible */
+  .g-col-3 {
+    grid-column: 1 / -1;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  .g-col-3 .photo {
+    flex: 1 1 calc(50% - 6px);
+  }
+}
