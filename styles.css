@@ -316,24 +316,29 @@ img {
   }
 }
 
+/* Mobile gallery: separate 2-column structure with 5 photos on the
+   narrow left and 6 on the wider right. Hidden on desktop. */
+.gallery-mobile {
+  display: none;
+}
+
 @media (max-width: 768px) {
-  /* Masonry layout: photos flow into 2 columns with no empty gaps.
-     display: contents on .g-col flattens the wrapper divs so all
-     photos become direct children of the masonry container. */
   .gallery {
-    display: block;
-    column-count: 2;
-    column-gap: 10px;
+    display: none;
   }
 
-  .g-col {
-    display: contents;
+  .gallery-mobile {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 10px;
+    align-items: start;
   }
 
-  .photo {
-    break-inside: avoid;
-    margin: 0 0 10px;
-    width: 100%;
+  .m-col {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    min-width: 0;
   }
 }
 
