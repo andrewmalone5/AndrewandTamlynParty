@@ -572,3 +572,47 @@ img {
     padding: 24px;
   }
 }
+
+/* ─────────── Footer ─────────── */
+
+.site-footer {
+  background: var(--color-red);
+  padding: clamp(64px, 8vw, 96px) clamp(24px, 6vw, 96px);
+}
+
+.footer-inner {
+  max-width: 1080px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 16px;
+}
+
+.footer-couple {
+  margin: 0;
+  font-family: var(--font-script);
+  font-weight: 400;
+  font-size: clamp(2.5rem, 5vw, 64px);
+  line-height: 1;
+  color: var(--color-cream);
+}
+
+.footer-meta {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--color-cream);
+  opacity: 0.75;
+}
+
+.footer-contact {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--color-cream);
+  opacity: 0.85;
+}
