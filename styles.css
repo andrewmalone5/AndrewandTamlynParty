@@ -349,14 +349,20 @@ img {
     align-items: start;
   }
 
+  /* Story sits above the gallery on mobile/tablet */
+  .story {
+    order: 1;
+    text-align: left;
+  }
+  .gallery,
+  .gallery-mobile {
+    order: 2;
+  }
+
   /* Reduce stagger on tablet/mobile to keep things tidy */
   .g-col-1,
   .g-col-3 {
     padding-top: 0;
-  }
-
-  .story {
-    text-align: left;
   }
 }
 
