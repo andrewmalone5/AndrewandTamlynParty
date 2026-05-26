@@ -42,6 +42,7 @@ img {
 /* ─────────── Header ─────────── */
 
 .site-header {
+  position: relative;
   background: var(--color-red);
   border-bottom: 1px solid var(--color-red-dark);
   padding: 4px 24px 5px;
@@ -50,6 +51,46 @@ img {
   justify-content: space-between;
   gap: 24px;
   min-height: 60px;
+}
+
+.nav-toggle {
+  display: none;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  margin: 0;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  color: var(--color-cream);
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+
+.nav-toggle-line {
+  display: block;
+  width: 22px;
+  height: 1.5px;
+  background: currentColor;
+  transition: transform 0.22s ease, opacity 0.18s ease;
+}
+
+.nav-toggle[aria-expanded="true"] .nav-toggle-line:nth-child(1) {
+  transform: translateY(6.5px) rotate(45deg);
+}
+.nav-toggle[aria-expanded="true"] .nav-toggle-line:nth-child(2) {
+  opacity: 0;
+}
+.nav-toggle[aria-expanded="true"] .nav-toggle-line:nth-child(3) {
+  transform: translateY(-6.5px) rotate(-45deg);
+}
+
+.nav-toggle:focus-visible {
+  outline: 2px solid var(--color-cream);
+  outline-offset: 2px;
+  border-radius: 4px;
 }
 
 .site-nav {
@@ -90,22 +131,48 @@ img {
     gap: 12px;
   }
 
-  .site-nav {
-    gap: 16px;
-  }
-
-  .nav-link {
-    font-size: 13px;
-  }
-}
-
-@media (max-width: 380px) {
-  .nav-link {
-    font-size: 12px;
+  .nav-toggle {
+    display: flex;
   }
 
   .site-nav {
-    gap: 12px;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    padding: 4px 16px 12px;
+    background: var(--color-red);
+    border-bottom: 1px solid var(--color-red-dark);
+    transform: translateY(-110%);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: transform 0.25s ease, opacity 0.2s ease, visibility 0.25s;
+    z-index: 10;
+  }
+
+  .nav-toggle[aria-expanded="true"] ~ .site-nav {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+
+  .nav-link {
+    padding: 14px 4px;
+    font-size: 16px;
+    border-bottom: 1px solid rgba(242, 231, 210, 0.18);
+  }
+
+  .nav-link:last-child {
+    border-bottom: 0;
+  }
+
+  .nav-link.is-active {
+    text-decoration: none;
   }
 }
 
@@ -273,9 +340,7 @@ img {
     width: 100%;
   }
 
-  /* Cocktail vertically centered, anchored to right edge with image
-     width spanning so its left edge sits at ~35% from the left of the
-     viewport — 65% of the cocktail "comes in" from the right. */
+  /* Whole cocktail centered as a faded watermark behind the text. */
   .hero-image {
     position: absolute;
     inset: 0;
@@ -284,16 +349,16 @@ img {
     pointer-events: none;
     display: flex;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: center;
     overflow: visible;
   }
 
   .hero-image img {
     height: 70vh;
     width: auto;
-    max-width: none;
-    transform: translateX(57%);
-    opacity: 0.35;
+    max-width: 90vw;
+    transform: none;
+    opacity: 0.18;
   }
 
   .event-details {
@@ -467,7 +532,7 @@ img {
   max-width: 1128px;
   font-family: var(--font-script);
   font-weight: 400;
-  font-size: clamp(1.75rem, 4vw, 56px);
+  font-size: clamp(1.125rem, 4vw, 56px);
   line-height: 1.15;
   color: var(--color-cream);
 }
@@ -736,6 +801,18 @@ img {
   .venue-block {
     grid-template-columns: 1fr;
     gap: 32px;
+  }
+  .venue-images {
+    grid-template-columns: 1fr;
+  }
+  .venue-image-main {
+    aspect-ratio: 3 / 2;
+  }
+  .venue-image-column {
+    flex-direction: row;
+  }
+  .venue-image-column .venue-image {
+    aspect-ratio: 1 / 1;
   }
   .schedule-grid {
     grid-template-columns: repeat(2, 1fr);
