@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Where to Stay &mdash; Andrew &amp; Tamlyn's Party</title>
+  <meta name="description" content="A few options for making yourself at home in Belfast for Andrew &amp; Tamlyn's Party on 5 September 2026." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Allura&family=DM+Sans:ital,wght@0,400;0,700;1,400&family=DM+Serif+Display:ital@0;1&family=Inter:ital,wght@0,400;0,700;1,400&display=swap" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header" aria-label="Site header">
+    <a class="logo" href="index.html" aria-label="Andrew and Tamlyn">
+      <span class="logo-a">A</span><span class="logo-amp">&amp;</span><span class="logo-t">T</span>
+    </a>
+    <button
+      class="nav-toggle"
+      type="button"
+      aria-label="Open menu"
+      aria-expanded="false"
+      aria-controls="site-nav"
+    >
+      <span class="nav-toggle-line"></span>
+      <span class="nav-toggle-line"></span>
+      <span class="nav-toggle-line"></span>
+    </button>
+    <nav class="site-nav" id="site-nav" aria-label="Primary">
+      <a class="nav-link" href="index.html">Home</a>
+      <a class="nav-link" href="getting-there.html">Getting There</a>
+      <a class="nav-link is-active" href="where-to-stay.html" aria-current="page">Where to Stay</a>
+      <a class="nav-link" href="faq.html">FAQ</a>
+    </nav>
+  </header>
+
+  <section class="where-to-stay" id="top">
+    <div class="wts-inner">
+
+      <header class="wts-header">
+        <h1 class="page-title">Where to stay</h1>
+        <p class="wts-subtitle">A few options for making yourself at home in Belfast.</p>
+      </header>
+
+      <div class="wts-grid">
+        <article class="card area-card">
+          <h2 class="card-heading">Cathedral Quarter</h2>
+          <p class="card-label">BT1</p>
+          <p class="card-body">Bars, restaurants, music venues, and most of Belfast&rsquo;s best food. Best for guests who want everything on their doorstep. 15 minutes from the venue by taxi.</p>
+        </article>
+
+        <article class="card area-card">
+          <h2 class="card-heading">City Centre</h2>
+          <p class="card-label">BT1 / BT2</p>
+          <p class="card-body">The biggest range of hotels at the widest range of prices. Well connected to everything. 10 to 15 minutes from the venue by taxi.</p>
+        </article>
+
+        <article class="card area-card">
+          <h2 class="card-heading">Titanic Quarter</h2>
+          <p class="card-label">BT3</p>
+          <p class="card-body">A short walk or quick taxi from the venue. Quieter and more residential, with fewer late-night options nearby. Best for an early night or an easy morning.</p>
+        </article>
+
+        <article class="card area-card">
+          <h2 class="card-heading">Botanic</h2>
+          <p class="card-label">BT7 / BT9</p>
+          <p class="card-body">A bit further out, more residential, leafier. Good for guests who want a calmer base. 15 to 20 minutes from the venue.</p>
+        </article>
+      </div>
+
+      <section class="gt-block">
+        <h2 class="section-title">Stuck for ideas?</h2>
+        <hr class="gt-divider" />
+        <div class="gt-block-body">
+          <p>Not sure where to look, what suits you, or what&rsquo;s good? Just message us. We know Belfast well and we&rsquo;ll happily point you in the right direction.</p>
+        </div>
+      </section>
+
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p class="footer-couple">Andrew &amp; Tamlyn</p>
+      <p class="footer-meta">Belfast &middot; Saturday 5 September 2026</p>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var toggle = document.querySelector('.nav-toggle');
+      var nav = document.getElementById('site-nav');
+      if (!toggle || !nav) return;
+
+      function setOpen(open) {
+        toggle.setAttribute('aria-expanded', String(open));
+        toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+      }
+
+      toggle.addEventListener('click', function () {
+        setOpen(toggle.getAttribute('aria-expanded') !== 'true');
+      });
+
+      nav.querySelectorAll('.nav-link').forEach(function (link) {
+        link.addEventListener('click', function () { setOpen(false); });
+      });
+
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') setOpen(false);
+      });
+    })();
+  </script>
+</body>
+</html>
