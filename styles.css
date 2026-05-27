@@ -25,6 +25,35 @@ body {
   padding: 0;
 }
 
+/* Smooth in-page scrolling for anchor jumps; respects OS reduced-motion. */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Cross-document view transitions (Chrome / Edge / Safari 18.2+).
+   Older browsers ignore these rules and navigate normally. */
+@view-transition {
+  navigation: auto;
+}
+
+/* Keep the header continuous across pages so only the content
+   area crossfades. The footer follows suit. */
+.site-header {
+  view-transition-name: site-header;
+}
+
+.site-footer {
+  view-transition-name: site-footer;
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 0.32s;
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
 body {
   background: var(--color-red);
   color: var(--color-cream);
