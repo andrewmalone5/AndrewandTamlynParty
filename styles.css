@@ -523,7 +523,7 @@ img {
 
 .bridge {
   background: var(--color-red);
-  padding: clamp(64px, 9vw, 128px) clamp(24px, 6vw, 96px) 0;
+  padding: clamp(64px, 9vw, 128px) clamp(24px, 6vw, 96px);
   text-align: center;
 }
 
@@ -771,6 +771,10 @@ img {
 
 .info-card {
   gap: 12px;
+}
+
+.info-card .pill {
+  margin-top: auto;
 }
 
 .weather-card {
@@ -1150,7 +1154,6 @@ img {
 .gt-story-body p {
   margin: 0;
   font-family: var(--font-serif);
-  font-style: italic;
   font-size: 16px;
   line-height: 1.65;
   color: var(--color-cream);
