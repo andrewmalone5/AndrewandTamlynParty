@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Getting There &mdash; Andrew &amp; Tamlyn's Party</title>
+  <meta name="description" content="How to get to Titanic Distillers, Belfast for Andrew &amp; Tamlyn's Party on 5 September 2026." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Allura&family=DM+Sans:ital,wght@0,400;0,700;1,400&family=DM+Serif+Display:ital@0;1&family=Inter:ital,wght@0,400;0,700;1,400&display=swap" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header" aria-label="Site header">
+    <a class="logo" href="index.html" aria-label="Andrew and Tamlyn">
+      <span class="logo-a">A</span><span class="logo-amp">&amp;</span><span class="logo-t">T</span>
+    </a>
+    <button
+      class="nav-toggle"
+      type="button"
+      aria-label="Open menu"
+      aria-expanded="false"
+      aria-controls="site-nav"
+    >
+      <span class="nav-toggle-line"></span>
+      <span class="nav-toggle-line"></span>
+      <span class="nav-toggle-line"></span>
+    </button>
+    <nav class="site-nav" id="site-nav" aria-label="Primary">
+      <a class="nav-link" href="index.html">Home</a>
+      <a class="nav-link is-active" href="getting-there.html" aria-current="page">Getting There</a>
+      <a class="nav-link" href="where-to-stay.html">Where to Stay</a>
+      <a class="nav-link" href="faq.html">FAQ</a>
+    </nav>
+  </header>
+
+  <section class="getting-there" id="top">
+    <div class="gt-inner">
+
+      <header class="gt-header">
+        <p class="block-label">Getting There</p>
+        <h1 class="page-title">How to get to Titanic Distillers</h1>
+        <p class="block-summary">[TODO: short intro &mdash; one or two sentences. e.g. &ldquo;Belfast is easy to reach &mdash; here&rsquo;s how, depending on where you&rsquo;re coming from.&rdquo;]</p>
+      </header>
+
+      <div class="tabs" role="tablist" aria-label="Getting there options">
+        <button
+          id="tab-abroad"
+          class="tab is-active"
+          role="tab"
+          type="button"
+          aria-selected="true"
+          aria-controls="panel-abroad"
+        >Coming from abroad</button>
+        <button
+          id="tab-ireland"
+          class="tab"
+          role="tab"
+          type="button"
+          aria-selected="false"
+          aria-controls="panel-ireland"
+          tabindex="-1"
+        >Already in Ireland</button>
+      </div>
+
+      <!-- Panel: Coming from abroad -->
+      <div
+        id="panel-abroad"
+        class="tab-panel"
+        role="tabpanel"
+        aria-labelledby="tab-abroad"
+      >
+        <div class="gt-grid">
+          <article class="card gt-card">
+            <span class="pill pill--chip pill--filled">Recommended</span>
+            <h2 class="card-heading">[Fly to Belfast]</h2>
+            <p class="card-body">[TODO: body copy &mdash; which airports (BFS / BHD), why this is recommended, transfer time to the venue, anything specific you want guests to know.]</p>
+          </article>
+
+          <article class="card gt-card">
+            <h2 class="card-heading">[Fly to Dublin, then onward]</h2>
+            <p class="card-body">[TODO: body copy &mdash; when this makes sense, how to get from Dublin to Belfast (train / bus / drive), rough time and cost.]</p>
+          </article>
+
+          <article class="card gt-card">
+            <span class="pill pill--chip">Quick picks</span>
+            <h2 class="card-heading">[Airlines &amp; tips]</h2>
+            <p class="card-body">[TODO: bullet-ish tips &mdash; airlines you recommend, when to book, anything else handy.]</p>
+          </article>
+        </div>
+      </div>
+
+      <!-- Panel: Already in Ireland -->
+      <div
+        id="panel-ireland"
+        class="tab-panel"
+        role="tabpanel"
+        aria-labelledby="tab-ireland"
+        hidden
+      >
+        <div class="gt-grid">
+          <article class="card gt-card">
+            <span class="pill pill--chip pill--filled">Recommended</span>
+            <h2 class="card-heading">[Train to Belfast Grand Central]</h2>
+            <p class="card-body">[TODO: body copy &mdash; routes from Dublin / elsewhere, journey time, why this is recommended, last train back if relevant.]</p>
+          </article>
+
+          <article class="card gt-card">
+            <h2 class="card-heading">[Drive]</h2>
+            <p class="card-body">[TODO: body copy &mdash; parking at / near the venue, driving from Dublin, anything to know.]</p>
+            <a
+              class="pill"
+              href="https://maps.app.goo.gl/r3fGhjEMJNAqrnWj8"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Open Titanic Distillers location in Google Maps"
+            >
+              <svg class="pill-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                <path d="M12 21s-7-7.5-7-12a7 7 0 1 1 14 0c0 4.5-7 12-7 12z" />
+                <circle cx="12" cy="9" r="2.5" />
+              </svg>
+              <span>Open in Google Maps</span>
+            </a>
+          </article>
+
+          <article class="card gt-card">
+            <span class="pill pill--chip">Quick picks</span>
+            <h2 class="card-heading">[Taxi &amp; getting around]</h2>
+            <p class="card-body">[TODO: taxi apps that work in Belfast, rough fares, anything else handy.]</p>
+          </article>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p class="footer-couple">Andrew &amp; Tamlyn</p>
+      <p class="footer-meta">Belfast &middot; Saturday 5 September 2026</p>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var toggle = document.querySelector('.nav-toggle');
+      var nav = document.getElementById('site-nav');
+      if (toggle && nav) {
+        var setOpen = function (open) {
+          toggle.setAttribute('aria-expanded', String(open));
+          toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+        };
+        toggle.addEventListener('click', function () {
+          setOpen(toggle.getAttribute('aria-expanded') !== 'true');
+        });
+        nav.querySelectorAll('.nav-link').forEach(function (link) {
+          link.addEventListener('click', function () { setOpen(false); });
+        });
+        document.addEventListener('keydown', function (e) {
+          if (e.key === 'Escape') setOpen(false);
+        });
+      }
+    })();
+
+    (function () {
+      var tabs = Array.prototype.slice.call(document.querySelectorAll('.tabs [role="tab"]'));
+      if (!tabs.length) return;
+
+      var panels = {};
+      tabs.forEach(function (tab) {
+        var panelId = tab.getAttribute('aria-controls');
+        panels[tab.id] = document.getElementById(panelId);
+      });
+
+      // tab id -> URL slug (matches ?tab=... param)
+      var slugFor = { 'tab-abroad': 'abroad', 'tab-ireland': 'ireland' };
+      var idFor = { 'abroad': 'tab-abroad', 'ireland': 'tab-ireland' };
+
+      function activate(tabId, updateUrl) {
+        tabs.forEach(function (t) {
+          var active = (t.id === tabId);
+          t.classList.toggle('is-active', active);
+          t.setAttribute('aria-selected', String(active));
+          t.tabIndex = active ? 0 : -1;
+          var panel = panels[t.id];
+          if (panel) {
+            if (active) { panel.removeAttribute('hidden'); }
+            else { panel.setAttribute('hidden', ''); }
+          }
+        });
+        if (updateUrl) {
+          var slug = slugFor[tabId];
+          var url = new URL(window.location.href);
+          if (slug === 'ireland') {
+            url.searchParams.set('tab', 'ireland');
+          } else {
+            url.searchParams.delete('tab');
+          }
+          history.replaceState(null, '', url.pathname + (url.search ? url.search : '') + url.hash);
+        }
+      }
+
+      tabs.forEach(function (tab, i) {
+        tab.addEventListener('click', function () { activate(tab.id, true); });
+        tab.addEventListener('keydown', function (e) {
+          if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
+            e.preventDefault();
+            var next = (e.key === 'ArrowRight')
+              ? tabs[(i + 1) % tabs.length]
+              : tabs[(i - 1 + tabs.length) % tabs.length];
+            next.focus();
+            activate(next.id, true);
+          } else if (e.key === 'Home') {
+            e.preventDefault();
+            tabs[0].focus();
+            activate(tabs[0].id, true);
+          } else if (e.key === 'End') {
+            e.preventDefault();
+            tabs[tabs.length - 1].focus();
+            activate(tabs[tabs.length - 1].id, true);
+          }
+        });
+      });
+
+      var initial = new URL(window.location.href).searchParams.get('tab');
+      if (initial && idFor[initial]) {
+        activate(idFor[initial], false);
+      }
+    })();
+  </script>
+</body>
+</html>
