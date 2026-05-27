@@ -1153,9 +1153,9 @@ img {
 
 .gt-story-body p {
   margin: 0;
-  font-family: var(--font-serif);
+  font-family: var(--font-sans);
   font-size: 16px;
-  line-height: 1.65;
+  line-height: 1.6;
   color: var(--color-cream);
 }
 
