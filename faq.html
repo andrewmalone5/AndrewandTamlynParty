@@ -38,7 +38,10 @@
     <div class="faq-inner">
 
       <header class="faq-header">
-        <h1 class="page-title">Frequently asked questions</h1>
+        <div class="faq-title">
+          <h1 class="page-title">Frequently asked questions</h1>
+          <p class="faq-subtitle">A running list of the things people have asked us. Add to it any time, just message us.</p>
+        </div>
         <div class="faq-search" role="search">
           <svg class="faq-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
             <circle cx="11" cy="11" r="7" />
@@ -47,6 +50,12 @@
           <input id="faq-search-input" type="search" placeholder="Search the FAQ&hellip;" aria-label="Search the FAQ" autocomplete="off" />
         </div>
       </header>
+
+      <div id="faq-empty" class="faq-empty" hidden>
+        <h2 class="faq-empty-heading">Nothing matching that yet.</h2>
+        <p class="faq-empty-body">Drop us a message and we&rsquo;ll add the answer here so the next person doesn&rsquo;t have to ask.</p>
+        <button id="faq-clear-search" class="pill" type="button">Clear search</button>
+      </div>
 
       <div class="faq-categories">
 
@@ -282,20 +291,37 @@
       if (!input) return;
       var items = Array.prototype.slice.call(document.querySelectorAll('.faq-item'));
       var categories = Array.prototype.slice.call(document.querySelectorAll('.faq-category'));
+      var emptyState = document.getElementById('faq-empty');
+      var clearBtn = document.getElementById('faq-clear-search');
 
       function normalise(s) { return (s || '').toLowerCase().trim(); }
 
-      input.addEventListener('input', function () {
+      function applyFilter() {
         var q = normalise(input.value);
         items.forEach(function (item) {
           var text = normalise(item.textContent);
           item.hidden = q.length > 0 && text.indexOf(q) === -1;
         });
+        var anyCategoryVisible = false;
         categories.forEach(function (cat) {
           var anyVisible = cat.querySelectorAll('.faq-item:not([hidden])').length > 0;
           cat.hidden = q.length > 0 && !anyVisible;
+          if (!cat.hidden) anyCategoryVisible = true;
         });
-      });
+        if (emptyState) {
+          emptyState.hidden = !(q.length > 0 && !anyCategoryVisible);
+        }
+      }
+
+      input.addEventListener('input', applyFilter);
+
+      if (clearBtn) {
+        clearBtn.addEventListener('click', function () {
+          input.value = '';
+          applyFilter();
+          input.focus();
+        });
+      }
     })();
   </script>
 </body>
