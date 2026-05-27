@@ -450,6 +450,16 @@ img {
   width: 100%;
   height: auto;
   display: block;
+  transition:
+    transform 0.45s cubic-bezier(0.4, 0, 0.2, 1),
+    filter 0.35s ease;
+}
+
+@media (hover: hover) {
+  .photo:hover img {
+    transform: scale(1.04);
+    filter: brightness(1.08);
+  }
 }
 
 /* Story */
@@ -749,6 +759,18 @@ img {
   display: flex;
   flex-direction: column;
   background: transparent;
+  transition:
+    transform 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+    border-color 0.25s ease,
+    background-color 0.25s ease;
+}
+
+@media (hover: hover) {
+  .card:hover {
+    transform: translateY(-2px);
+    border-color: rgba(242, 231, 210, 0.85);
+    background-color: rgba(242, 231, 210, 0.02);
+  }
 }
 
 /* Running Order schedule */
@@ -990,10 +1012,35 @@ img {
   border-bottom-color: var(--color-cream);
 }
 
+/* When JS has positioned the sliding indicator, suppress the per-tab
+   underline so we don't render both. */
+.tabs.has-indicator .tab,
+.tabs.has-indicator .tab.is-active {
+  border-bottom-color: transparent;
+}
+
 .tab:focus-visible {
   outline: 2px solid var(--color-cream);
   outline-offset: 4px;
   border-radius: 2px;
+}
+
+.tab-indicator {
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  height: 2px;
+  width: 0;
+  background: var(--color-cream);
+  transform: translateX(0);
+  transition:
+    transform 0.32s cubic-bezier(0.4, 0, 0.2, 1),
+    width 0.32s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+}
+
+.tabs.has-indicator {
+  position: relative;
 }
 
 .tab-panel[hidden] {
@@ -1004,6 +1051,14 @@ img {
   display: flex;
   flex-direction: column;
   gap: clamp(48px, 6vw, 88px);
+  animation: tab-panel-in 0.32s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes tab-panel-in {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
 }
 
 /* Content block: chip + heading + divider + body + grid */
@@ -1502,6 +1557,39 @@ details[open] .faq-q-icon::after {
   margin: 0;
 }
 
+/* Smooth open/close for FAQ items.
+   Modern engines (Chrome 131+, Safari 18.4+, Edge 131+) animate the height
+   via ::details-content + interpolate-size. Other browsers still get a
+   gentle fade-in on open via the keyframe fallback below. */
+@supports (interpolate-size: allow-keywords) {
+  :root {
+    interpolate-size: allow-keywords;
+  }
+}
+
+.faq-item::details-content {
+  block-size: 0;
+  overflow: clip;
+  transition:
+    block-size 0.32s cubic-bezier(0.4, 0, 0.2, 1),
+    content-visibility 0.32s allow-discrete;
+}
+
+.faq-item[open]::details-content {
+  block-size: auto;
+}
+
+.faq-item[open] > .faq-a {
+  animation: faq-a-in 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes faq-a-in {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+}
+
 /* Still got questions? */
 .faq-help {
   display: flex;
@@ -1562,5 +1650,17 @@ details[open] .faq-q-icon::after {
   line-height: 1.5;
   color: var(--color-cream);
   opacity: 0.75;
+}
+
+/* ─────────── Reduced motion safety net ─────────── */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
 

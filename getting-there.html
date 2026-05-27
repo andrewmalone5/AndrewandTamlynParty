@@ -59,6 +59,7 @@
           aria-controls="panel-ireland"
           tabindex="-1"
         >Already in Ireland</button>
+        <span class="tab-indicator" aria-hidden="true"></span>
       </div>
 
       <!-- Panel: Coming from abroad -->
@@ -227,6 +228,9 @@
       var tabs = Array.prototype.slice.call(document.querySelectorAll('.tabs [role="tab"]'));
       if (!tabs.length) return;
 
+      var tabsContainer = document.querySelector('.tabs');
+      var indicator = document.querySelector('.tab-indicator');
+
       var panels = {};
       tabs.forEach(function (tab) {
         var panelId = tab.getAttribute('aria-controls');
@@ -236,6 +240,23 @@
       var slugFor = { 'tab-abroad': 'abroad', 'tab-ireland': 'ireland' };
       var idFor = { 'abroad': 'tab-abroad', 'ireland': 'tab-ireland' };
 
+      function positionIndicator(animate) {
+        if (!indicator || !tabsContainer) return;
+        var active = tabs.filter(function (t) { return t.classList.contains('is-active'); })[0];
+        if (!active) return;
+        var tr = active.getBoundingClientRect();
+        var cr = tabsContainer.getBoundingClientRect();
+        if (!animate) indicator.style.transition = 'none';
+        indicator.style.width = tr.width + 'px';
+        indicator.style.transform = 'translateX(' + (tr.left - cr.left) + 'px)';
+        if (!animate) {
+          // Force a reflow, then clear the override so future moves animate.
+          /* eslint-disable-next-line no-unused-expressions */
+          indicator.offsetHeight;
+          indicator.style.transition = '';
+        }
+      }
+
       function activate(tabId, updateUrl) {
         tabs.forEach(function (t) {
           var active = (t.id === tabId);
@@ -244,10 +265,19 @@
           t.tabIndex = active ? 0 : -1;
           var panel = panels[t.id];
           if (panel) {
-            if (active) { panel.removeAttribute('hidden'); }
-            else { panel.setAttribute('hidden', ''); }
+            if (active) {
+              panel.removeAttribute('hidden');
+              // Restart the entrance animation each time the panel is shown.
+              panel.style.animation = 'none';
+              /* eslint-disable-next-line no-unused-expressions */
+              panel.offsetHeight;
+              panel.style.animation = '';
+            } else {
+              panel.setAttribute('hidden', '');
+            }
           }
         });
+        positionIndicator(true);
         if (updateUrl) {
           var slug = slugFor[tabId];
           var url = new URL(window.location.href);
@@ -261,7 +291,10 @@
       }
 
       tabs.forEach(function (tab, i) {
-        tab.addEventListener('click', function () { activate(tab.id, true); });
+        tab.addEventListener('click', function () {
+          if (tab.classList.contains('is-active')) return;
+          activate(tab.id, true);
+        });
         tab.addEventListener('keydown', function (e) {
           if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
             e.preventDefault();
@@ -285,6 +318,26 @@
       var initial = new URL(window.location.href).searchParams.get('tab');
       if (initial && idFor[initial]) {
         activate(idFor[initial], false);
+      }
+
+      // Mark the tablist as JS-driven so CSS suppresses the per-tab
+      // fallback underline; then place the indicator without animation.
+      if (tabsContainer && indicator) {
+        tabsContainer.classList.add('has-indicator');
+        positionIndicator(false);
+
+        var resizeTimer;
+        window.addEventListener('resize', function () {
+          clearTimeout(resizeTimer);
+          resizeTimer = setTimeout(function () {
+            positionIndicator(false);
+          }, 120);
+        });
+
+        // Web fonts can shift tab widths after first paint — reposition once they settle.
+        if (document.fonts && document.fonts.ready) {
+          document.fonts.ready.then(function () { positionIndicator(false); });
+        }
       }
     })();
   </script>
