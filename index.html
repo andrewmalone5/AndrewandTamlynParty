@@ -9,6 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Allura&family=DM+Sans:ital,wght@0,400;0,700;1,400&family=DM+Serif+Display:ital@0;1&family=Inter:ital,wght@0,400;0,700;1,400&display=swap" />
   <link rel="stylesheet" href="styles.css" />
+  <link rel="preload" as="image" href="images/whiskeyglass.webp" type="image/webp" fetchpriority="high" />
 </head>
 <body>
   <header class="site-header" aria-label="Site header">
@@ -45,7 +46,17 @@
         <p class="event-type">private event</p>
       </div>
       <div class="hero-image">
-        <img src="images/whiskeyglass.png" alt="" />
+        <picture>
+          <source srcset="images/whiskeyglass.webp" type="image/webp" />
+          <img
+            src="images/whiskeyglass.png"
+            alt=""
+            width="1586"
+            height="1584"
+            fetchpriority="high"
+            decoding="async"
+          />
+        </picture>
       </div>
     </div>
   </section>
