@@ -38,7 +38,7 @@
   <section class="faq" id="top">
     <div class="faq-inner">
 
-      <header class="faq-header">
+      <header class="faq-header reveal">
         <div class="faq-title">
           <h1 class="page-title">Frequently asked questions</h1>
           <p class="faq-subtitle">A running list of the things people have asked us. Add to it any time, just message us.</p>
@@ -60,7 +60,7 @@
 
       <div class="faq-categories">
 
-        <section class="faq-category">
+        <section class="faq-category reveal">
           <h2 class="section-title">The Basics</h2>
           <hr class="gt-divider" />
           <div class="faq-list">
@@ -76,7 +76,7 @@
           </div>
         </section>
 
-        <section class="faq-category">
+        <section class="faq-category reveal">
           <h2 class="section-title">Getting There</h2>
           <hr class="gt-divider" />
           <div class="faq-list">
@@ -110,7 +110,7 @@
           </div>
         </section>
 
-        <section class="faq-category">
+        <section class="faq-category reveal">
           <h2 class="section-title">Where to Stay</h2>
           <hr class="gt-divider" />
           <div class="faq-list">
@@ -135,7 +135,7 @@
           </div>
         </section>
 
-        <section class="faq-category">
+        <section class="faq-category reveal">
           <h2 class="section-title">The Venue</h2>
           <hr class="gt-divider" />
           <div class="faq-list">
@@ -178,7 +178,7 @@
           </div>
         </section>
 
-        <section class="faq-category">
+        <section class="faq-category reveal">
           <h2 class="section-title">Practicalities</h2>
           <hr class="gt-divider" />
           <div class="faq-list">
@@ -212,7 +212,7 @@
           </div>
         </section>
 
-        <section class="faq-category">
+        <section class="faq-category reveal">
           <h2 class="section-title">RSVP &amp; Gifts</h2>
           <hr class="gt-divider" />
           <div class="faq-list">
@@ -248,7 +248,7 @@
 
       </div>
 
-      <section class="faq-help">
+      <section class="faq-help reveal">
         <h2 class="gt-section-heading">Still got questions?</h2>
         <p>Just message us. We&rsquo;ll add the answer to this page so the next person doesn&rsquo;t have to ask.</p>
       </section>
@@ -323,6 +323,25 @@
           input.focus();
         });
       }
+    })();
+
+    (function () {
+      // Reveal-on-scroll for sections marked with .reveal.
+      var reveals = document.querySelectorAll('.reveal');
+      if (!reveals.length) return;
+      if (!('IntersectionObserver' in window)) {
+        reveals.forEach(function (el) { el.classList.add('is-revealed'); });
+        return;
+      }
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-revealed');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+      reveals.forEach(function (el) { observer.observe(el); });
     })();
   </script>
 </body>

@@ -38,7 +38,7 @@
   <section class="getting-there" id="top">
     <div class="gt-inner">
 
-      <header class="gt-header">
+      <header class="gt-header reveal">
         <h1 class="page-title">Getting There</h1>
       </header>
 
@@ -70,9 +70,9 @@
         role="tabpanel"
         aria-labelledby="tab-abroad"
       >
-        <h2 class="gt-section-heading">How to get to Belfast</h2>
+        <h2 class="gt-section-heading reveal">How to get to Belfast</h2>
 
-        <section class="gt-block">
+        <section class="gt-block reveal">
           <span class="pill pill--chip pill--filled">Recommended</span>
           <h3 class="section-title">Flying to Dublin</h3>
           <hr class="gt-divider" />
@@ -128,7 +128,7 @@
           </div>
         </section>
 
-        <section class="gt-block">
+        <section class="gt-block reveal">
           <span class="pill pill--chip">Quick picks</span>
           <h3 class="section-title">Travel Suggestions from Dublin Airport</h3>
           <hr class="gt-divider" />
@@ -169,7 +169,7 @@
         aria-labelledby="tab-ireland"
         hidden
       >
-        <div class="gt-story">
+        <div class="gt-story reveal">
           <h3 class="section-title">Drive north. Can&rsquo;t miss it.</h3>
           <div class="gt-story-body">
             <p>Couldn&rsquo;t be simpler. Head north, just keep going. You&rsquo;ll know you&rsquo;re getting close when you see a field with a horse in it, but not that field, the other field. There&rsquo;s a big tree on the left, can&rsquo;t miss it, it&rsquo;s a beautiful tree.</p>
@@ -340,6 +340,25 @@
           document.fonts.ready.then(function () { positionIndicator(false); });
         }
       }
+    })();
+
+    (function () {
+      // Reveal-on-scroll for sections marked with .reveal.
+      var reveals = document.querySelectorAll('.reveal');
+      if (!reveals.length) return;
+      if (!('IntersectionObserver' in window)) {
+        reveals.forEach(function (el) { el.classList.add('is-revealed'); });
+        return;
+      }
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-revealed');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+      reveals.forEach(function (el) { observer.observe(el); });
     })();
   </script>
 </body>
