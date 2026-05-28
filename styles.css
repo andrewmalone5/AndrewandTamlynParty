@@ -606,7 +606,7 @@ img {
   max-width: 1128px;
   font-family: var(--font-script);
   font-weight: 400;
-  font-size: clamp(1.75rem, 7vw, 56px);
+  font-size: clamp(2rem, 7vw, 56px);
   line-height: 1.25;
   color: var(--color-cream);
 }
