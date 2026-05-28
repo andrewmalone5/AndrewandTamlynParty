@@ -630,6 +630,19 @@ img {
   gap: 16px;
 }
 
+.mixtape-embed {
+  border-radius: 12px;
+  overflow: hidden;
+  line-height: 0;
+}
+
+.mixtape-embed iframe {
+  display: block;
+  width: 100%;
+  height: 152px;
+  border: 0;
+}
+
 /* Shared block label / headline / summary */
 .block-label {
   margin: 0;
@@ -791,18 +804,6 @@ img {
   display: flex;
   flex-direction: column;
   background: transparent;
-  transition:
-    transform 0.25s cubic-bezier(0.4, 0, 0.2, 1),
-    border-color 0.25s ease,
-    background-color 0.25s ease;
-}
-
-@media (hover: hover) {
-  .card:hover {
-    transform: translateY(-2px);
-    border-color: rgba(242, 231, 210, 0.85);
-    background-color: rgba(242, 231, 210, 0.02);
-  }
 }
 
 /* Running Order schedule */
