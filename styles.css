@@ -619,10 +619,15 @@ img {
 }
 
 .schedule-block,
-.wear-block {
+.wear-block,
+.mixtape-block {
   display: flex;
   flex-direction: column;
   gap: 24px;
+}
+
+.mixtape-card {
+  gap: 16px;
 }
 
 /* Shared block label / headline / summary */
