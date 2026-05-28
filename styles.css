@@ -393,6 +393,14 @@ img {
     width: 100%;
   }
 
+  /* Lift the text above the cocktail's stacking level. Without this, the
+     absolute-positioned .hero-image at z-index 0 paints on top of static
+     .event-details and the cocktail bleeds through the letters. */
+  .event-details {
+    position: relative;
+    z-index: 2;
+  }
+
   /* Cocktail anchored to the right, vertically centered, locked at native
      aspect ratio. About 65% visible (rightmost 35% overflows off-screen).
      svh keeps the height stable as the mobile URL bar collapses. */
