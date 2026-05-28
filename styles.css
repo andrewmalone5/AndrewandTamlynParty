@@ -1685,6 +1685,59 @@ details[open] .faq-q-icon::after {
   opacity: 0.75;
 }
 
+/* ─────────── Smooth-loading effects (image fade-in + reveal-on-scroll) ─────────── */
+
+/* Content images fade in as each one finishes loading. Gated on .has-js
+   so users without JS see images immediately rather than blank slots. */
+.has-js .photo img,
+.has-js .venue-image img {
+  opacity: 0;
+  transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.has-js .photo img.is-loaded,
+.has-js .venue-image img.is-loaded {
+  opacity: 1;
+}
+
+/* Section reveal-on-scroll. Same .has-js gate. */
+.has-js .reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: opacity, transform;
+}
+
+.has-js .reveal.is-revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Hero entrance stagger on first paint. */
+.has-js .hero .hosts,
+.has-js .hero .event-name,
+.has-js .hero .divider,
+.has-js .hero .event-date,
+.has-js .hero .event-location,
+.has-js .hero .event-type {
+  opacity: 0;
+  animation: hero-stagger 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.has-js .hero .hosts        { animation-delay: 0.15s; }
+.has-js .hero .event-name   { animation-delay: 0.30s; }
+.has-js .hero .divider      { animation-delay: 0.50s; }
+.has-js .hero .event-date   { animation-delay: 0.65s; }
+.has-js .hero .event-location { animation-delay: 0.80s; }
+.has-js .hero .event-type   { animation-delay: 0.95s; }
+
+@keyframes hero-stagger {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
 /* ─────────── Reduced motion safety net ─────────── */
 
 @media (prefers-reduced-motion: reduce) {
@@ -1692,8 +1745,19 @@ details[open] .faq-q-icon::after {
   *::before,
   *::after {
     animation-duration: 0.01ms !important;
+    animation-delay: 0s !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+  }
+
+  /* Force revealable elements visible without movement. */
+  .has-js .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  .has-js .photo img,
+  .has-js .venue-image img {
+    opacity: 1 !important;
   }
 }
 
