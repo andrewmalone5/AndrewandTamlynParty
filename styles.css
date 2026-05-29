@@ -258,7 +258,7 @@ img {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: clamp(48px, 8vw, 120px) clamp(24px, 10vw, var(--hero-side-padding-desktop));
+  padding: clamp(24px, 3vw, 48px) clamp(24px, 10vw, var(--hero-side-padding-desktop));
 }
 
 .hero-inner {
