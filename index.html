@@ -301,27 +301,17 @@
     })();
 
     (function () {
-      // Header gets a frosted-glass scrolled state once the user
-      // scrolls at all; reverts to plain solid red at the very top.
-      var header = document.querySelector('.site-header');
-      if (!header) return;
-      var ticking = false;
-
-      function update() {
-        header.classList.toggle('is-scrolled', window.scrollY > 0);
-        ticking = false;
-      }
-
-      update();
-      window.addEventListener('scroll', function () {
-        if (!ticking) {
-          window.requestAnimationFrame(update);
-          ticking = true;
+      // Fade content images in as each one loads.
+      var images = document.querySelectorAll('.photo img, .venue-image img');
+      images.forEach(function (img) {
+        if (img.complete && img.naturalHeight !== 0) {
+          img.classList.add('is-loaded');
+        } else {
+          img.addEventListener('load', function () { img.classList.add('is-loaded'); });
+          img.addEventListener('error', function () { img.classList.add('is-loaded'); });
         }
-      }, { passive: true });
-    })();
+      });
 
-    (function () {
       // Reveal-on-scroll for sections marked with .reveal.
       var reveals = document.querySelectorAll('.reveal');
       if (!reveals.length) return;

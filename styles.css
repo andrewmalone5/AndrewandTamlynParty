@@ -71,9 +71,7 @@ img {
 /* ─────────── Header ─────────── */
 
 .site-header {
-  position: sticky;
-  top: 0;
-  z-index: 50;
+  position: relative;
   background: var(--color-red);
   border-bottom: 1px solid var(--color-red-dark);
   padding: 4px 24px 5px;
@@ -82,21 +80,6 @@ img {
   justify-content: space-between;
   gap: 24px;
   min-height: 60px;
-  transition:
-    background-color 0.35s ease,
-    box-shadow 0.35s ease,
-    backdrop-filter 0.35s ease,
-    -webkit-backdrop-filter 0.35s ease;
-}
-
-/* Premium scrolled state: lighter, frosted-glass effect.
-   JS adds .is-scrolled the moment window.scrollY > 0. */
-.site-header.is-scrolled {
-  background-color: rgba(214, 61, 63, 0.5);
-  -webkit-backdrop-filter: blur(20px) saturate(1.25);
-  backdrop-filter: blur(20px) saturate(1.25);
-  box-shadow: 0 2px 14px rgba(0, 0, 0, 0.06);
-  border-bottom-color: rgba(242, 231, 210, 0.15);
 }
 
 .nav-toggle {
@@ -1711,9 +1694,22 @@ details[open] .faq-q-icon::after {
   opacity: 0.75;
 }
 
-/* ─────────── Smooth-loading effects (reveal-on-scroll only) ─────────── */
+/* ─────────── Smooth-loading effects (image fade-in + reveal-on-scroll) ─────────── */
 
-/* Section reveal-on-scroll. */
+/* Content images fade in as each one finishes loading. Gated on .has-js
+   so users without JS see images immediately rather than blank slots. */
+.has-js .photo img,
+.has-js .venue-image img {
+  opacity: 0;
+  transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.has-js .photo img.is-loaded,
+.has-js .venue-image img.is-loaded {
+  opacity: 1;
+}
+
+/* Section reveal-on-scroll. Same .has-js gate. */
 .has-js .reveal {
   opacity: 0;
   transform: translateY(24px);
@@ -1767,6 +1763,10 @@ details[open] .faq-q-icon::after {
   .has-js .reveal {
     opacity: 1 !important;
     transform: none !important;
+  }
+  .has-js .photo img,
+  .has-js .venue-image img {
+    opacity: 1 !important;
   }
 }
 

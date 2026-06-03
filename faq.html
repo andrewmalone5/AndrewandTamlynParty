@@ -311,27 +311,6 @@
     })();
 
     (function () {
-      // Header gets a frosted-glass scrolled state once the user
-      // scrolls at all; reverts to plain solid red at the very top.
-      var header = document.querySelector('.site-header');
-      if (!header) return;
-      var ticking = false;
-
-      function update() {
-        header.classList.toggle('is-scrolled', window.scrollY > 0);
-        ticking = false;
-      }
-
-      update();
-      window.addEventListener('scroll', function () {
-        if (!ticking) {
-          window.requestAnimationFrame(update);
-          ticking = true;
-        }
-      }, { passive: true });
-    })();
-
-    (function () {
       var input = document.getElementById('faq-search-input');
       if (!input) return;
       var items = Array.prototype.slice.call(document.querySelectorAll('.faq-item'));
