@@ -89,13 +89,14 @@ img {
     -webkit-backdrop-filter 0.35s ease;
 }
 
-/* Premium scrolled state: subtle frosted-glass effect + soft drop shadow.
+/* Premium scrolled state: lighter, frosted-glass effect.
    JS adds .is-scrolled the moment window.scrollY > 0. */
 .site-header.is-scrolled {
-  background-color: rgba(214, 61, 63, 0.82);
-  -webkit-backdrop-filter: blur(14px) saturate(1.5);
-  backdrop-filter: blur(14px) saturate(1.5);
-  box-shadow: 0 6px 28px rgba(0, 0, 0, 0.18);
+  background-color: rgba(214, 61, 63, 0.5);
+  -webkit-backdrop-filter: blur(20px) saturate(1.25);
+  backdrop-filter: blur(20px) saturate(1.25);
+  box-shadow: 0 2px 14px rgba(0, 0, 0, 0.06);
+  border-bottom-color: rgba(242, 231, 210, 0.15);
 }
 
 .nav-toggle {
