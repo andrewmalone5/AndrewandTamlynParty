@@ -1816,14 +1816,18 @@ details[open] .faq-q-icon::after {
 .has-js .hero .hosts          { animation-delay: 0.15s; }
 .has-js .hero .event-tagline  { animation-delay: 0.22s; }
 .has-js .hero .event-name     { animation-delay: 0.30s; }
-.has-js .hero .divider        { animation-delay: 0.50s; }
+.has-js .hero .divider        { animation-delay: 0.50s; --hero-end-opacity: 0.55; }
 .has-js .hero .event-date     { animation-delay: 0.65s; }
 .has-js .hero .event-location { animation-delay: 0.80s; }
 .has-js .hero .event-type     { animation-delay: 0.95s; }
 
+@media (max-width: 600px) {
+  .has-js .hero .divider { --hero-end-opacity: 0.6; }
+}
+
 @keyframes hero-stagger {
   from { opacity: 0; transform: translateY(14px); }
-  to   { opacity: 1; transform: translateY(0); }
+  to   { opacity: var(--hero-end-opacity, 1); transform: translateY(0); }
 }
 
 /* ─────────── Reduced motion safety net ─────────── */
