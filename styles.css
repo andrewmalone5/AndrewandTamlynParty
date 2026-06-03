@@ -315,7 +315,7 @@ img {
   margin: 0;
   font-family: var(--font-serif);
   font-weight: 400;
-  font-size: clamp(3.75rem, 16vw, 224px);
+  font-size: clamp(5rem, 16vw, 224px);
   line-height: 0.85;
   letter-spacing: -0.04em;
   text-transform: uppercase;
@@ -448,7 +448,7 @@ img {
     width: auto;
     max-width: none;
     transform: translateX(35%);
-    opacity: 0.2;
+    opacity: 0.35;
   }
 
   .event-details {
