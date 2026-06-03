@@ -244,6 +244,36 @@
     })();
 
     (function () {
+      // Hide-on-scroll-down, show-on-scroll-up for the header.
+      var header = document.querySelector('.site-header');
+      if (!header) return;
+      var lastY = window.scrollY;
+      var ticking = false;
+      var topThreshold = 60;
+      var moveThreshold = 4;
+
+      function update() {
+        var y = window.scrollY;
+        var delta = y - lastY;
+        if (y <= topThreshold) {
+          header.classList.remove('is-hidden');
+        } else if (Math.abs(delta) > moveThreshold) {
+          if (delta > 0) header.classList.add('is-hidden');
+          else header.classList.remove('is-hidden');
+        }
+        lastY = y;
+        ticking = false;
+      }
+
+      window.addEventListener('scroll', function () {
+        if (!ticking) {
+          window.requestAnimationFrame(update);
+          ticking = true;
+        }
+      }, { passive: true });
+    })();
+
+    (function () {
       var tabs = Array.prototype.slice.call(document.querySelectorAll('.tabs [role="tab"]'));
       if (!tabs.length) return;
 

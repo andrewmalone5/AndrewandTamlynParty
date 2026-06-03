@@ -71,7 +71,9 @@ img {
 /* ─────────── Header ─────────── */
 
 .site-header {
-  position: relative;
+  position: sticky;
+  top: 0;
+  z-index: 50;
   background: var(--color-red);
   border-bottom: 1px solid var(--color-red-dark);
   padding: 4px 24px 5px;
@@ -80,6 +82,14 @@ img {
   justify-content: space-between;
   gap: 24px;
   min-height: 60px;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Hide-on-scroll: JS toggles .is-hidden when the user scrolls down,
+   removes it when they scroll back up. Header stays in flow (sticky)
+   so layout doesn't shift. */
+.site-header.is-hidden {
+  transform: translateY(-100%);
 }
 
 .nav-toggle {
