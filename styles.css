@@ -322,6 +322,20 @@ img {
   color: var(--color-cream);
 }
 
+/* Wraps the tagline rules + PARTY + divider so all three share the
+   same width as PARTY's text. width: fit-content shrinks the block
+   to its widest child (PARTY); the rules and divider then sit at
+   100% of that. Matches Figma node 118:350. */
+.party-block {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  width: fit-content;
+  max-width: 100%;
+  align-self: center;
+  gap: inherit;
+}
+
 .divider {
   width: 100%;
   height: 1px;
