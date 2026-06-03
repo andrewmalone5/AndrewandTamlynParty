@@ -285,6 +285,31 @@ img {
   color: var(--color-cream);
 }
 
+/* "not a wedding" — italic serif with hairline rules either side. */
+.event-tagline {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(0.875rem, 1vw, 16px);
+  line-height: 1;
+  letter-spacing: 0.32em;
+  color: var(--color-cream);
+}
+
+.event-tagline::before,
+.event-tagline::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.55;
+}
+
 .event-name {
   margin: 0;
   font-family: var(--font-serif);
@@ -1726,6 +1751,7 @@ details[open] .faq-q-icon::after {
 
 /* Hero entrance stagger on first paint. */
 .has-js .hero .hosts,
+.has-js .hero .event-tagline,
 .has-js .hero .event-name,
 .has-js .hero .divider,
 .has-js .hero .event-date,
@@ -1735,12 +1761,13 @@ details[open] .faq-q-icon::after {
   animation: hero-stagger 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
-.has-js .hero .hosts        { animation-delay: 0.15s; }
-.has-js .hero .event-name   { animation-delay: 0.30s; }
-.has-js .hero .divider      { animation-delay: 0.50s; }
-.has-js .hero .event-date   { animation-delay: 0.65s; }
+.has-js .hero .hosts          { animation-delay: 0.15s; }
+.has-js .hero .event-tagline  { animation-delay: 0.22s; }
+.has-js .hero .event-name     { animation-delay: 0.30s; }
+.has-js .hero .divider        { animation-delay: 0.50s; }
+.has-js .hero .event-date     { animation-delay: 0.65s; }
 .has-js .hero .event-location { animation-delay: 0.80s; }
-.has-js .hero .event-type   { animation-delay: 0.95s; }
+.has-js .hero .event-type     { animation-delay: 0.95s; }
 
 @keyframes hero-stagger {
   from { opacity: 0; transform: translateY(14px); }
