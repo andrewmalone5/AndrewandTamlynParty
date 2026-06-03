@@ -130,27 +130,18 @@
     })();
 
     (function () {
-      // Hide-on-scroll-down, show-on-scroll-up for the header.
+      // Header gets a frosted-glass scrolled state once the user
+      // scrolls at all; reverts to plain solid red at the very top.
       var header = document.querySelector('.site-header');
       if (!header) return;
-      var lastY = window.scrollY;
       var ticking = false;
-      var topThreshold = 60;
-      var moveThreshold = 4;
 
       function update() {
-        var y = window.scrollY;
-        var delta = y - lastY;
-        if (y <= topThreshold) {
-          header.classList.remove('is-hidden');
-        } else if (Math.abs(delta) > moveThreshold) {
-          if (delta > 0) header.classList.add('is-hidden');
-          else header.classList.remove('is-hidden');
-        }
-        lastY = y;
+        header.classList.toggle('is-scrolled', window.scrollY > 0);
         ticking = false;
       }
 
+      update();
       window.addEventListener('scroll', function () {
         if (!ticking) {
           window.requestAnimationFrame(update);
