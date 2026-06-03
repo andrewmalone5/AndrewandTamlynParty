@@ -328,6 +328,7 @@ img {
   border: 0;
   background: var(--color-cream);
   margin: 0;
+  opacity: 0.55;
 }
 
 .event-date {
@@ -454,13 +455,6 @@ img {
   .event-details {
     gap: clamp(20px, 3.5vh, 32px);
   }
-
-  /* Keep the "not a wedding" rules and the divider below PARTY the same
-     length on mobile — both contained, not stretching to the edges. */
-  .event-tagline,
-  .divider {
-    width: 60%;
-  }
 }
 
 /* Mobile hero — match Figma values for the 390px design target. */
@@ -478,15 +472,21 @@ img {
     line-height: 52px;
   }
 
+  /* Fade the text via color alpha (not parent opacity), otherwise the
+     0.65 multiplies through to the ::before/::after rules and crushes
+     them to ~0.39 effective. Figma wants text 0.65, rules 0.6. */
   .event-tagline {
     font-size: 10px;
     line-height: 14px;
     letter-spacing: 7px;
-    opacity: 0.65;
+    color: rgba(242, 231, 210, 0.65);
   }
 
+  /* Switch the rules off currentColor so the parent color-alpha doesn't
+     leak in — they render as direct cream at their own 0.6 opacity. */
   .event-tagline::before,
   .event-tagline::after {
+    background: var(--color-cream);
     opacity: 0.6;
   }
 
