@@ -1711,22 +1711,9 @@ details[open] .faq-q-icon::after {
   opacity: 0.75;
 }
 
-/* ─────────── Smooth-loading effects (image fade-in + reveal-on-scroll) ─────────── */
+/* ─────────── Smooth-loading effects (reveal-on-scroll only) ─────────── */
 
-/* Content images fade in as each one finishes loading. Gated on .has-js
-   so users without JS see images immediately rather than blank slots. */
-.has-js .photo img,
-.has-js .venue-image img {
-  opacity: 0;
-  transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.has-js .photo img.is-loaded,
-.has-js .venue-image img.is-loaded {
-  opacity: 1;
-}
-
-/* Section reveal-on-scroll. Same .has-js gate. */
+/* Section reveal-on-scroll. */
 .has-js .reveal {
   opacity: 0;
   transform: translateY(24px);
@@ -1780,10 +1767,6 @@ details[open] .faq-q-icon::after {
   .has-js .reveal {
     opacity: 1 !important;
     transform: none !important;
-  }
-  .has-js .photo img,
-  .has-js .venue-image img {
-    opacity: 1 !important;
   }
 }
 

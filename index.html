@@ -322,17 +322,6 @@
     })();
 
     (function () {
-      // Fade content images in as each one loads.
-      var images = document.querySelectorAll('.photo img, .venue-image img');
-      images.forEach(function (img) {
-        if (img.complete && img.naturalHeight !== 0) {
-          img.classList.add('is-loaded');
-        } else {
-          img.addEventListener('load', function () { img.classList.add('is-loaded'); });
-          img.addEventListener('error', function () { img.classList.add('is-loaded'); });
-        }
-      });
-
       // Reveal-on-scroll for sections marked with .reveal.
       var reveals = document.querySelectorAll('.reveal');
       if (!reveals.length) return;
