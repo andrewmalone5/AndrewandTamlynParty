@@ -455,6 +455,9 @@ img {
     gap: clamp(20px, 3.5vh, 32px);
   }
 
+  /* Keep the "not a wedding" rules and the divider below PARTY the same
+     length on mobile — both contained, not stretching to the edges. */
+  .event-tagline,
   .divider {
     width: 60%;
   }
