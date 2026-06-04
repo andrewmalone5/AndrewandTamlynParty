@@ -735,34 +735,6 @@ img {
   }
 }
 
-/* Mixtape — hand-drawn squiggle under the headline. */
-.mixtape-title {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 4px;
-}
-
-.mixtape-squiggle {
-  display: block;
-  width: clamp(180px, 28%, 280px);
-  height: 12px;
-  color: var(--color-cream);
-  opacity: 0.7;
-}
-
-/* Mixtape — small meta line under the embed (track count, etc). */
-.mixtape-meta {
-  margin: 0;
-  font-family: var(--font-sans);
-  font-weight: 700;
-  font-size: 12px;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--color-cream);
-  opacity: 0.7;
-}
-
 /* Mixtape — ambient pulse on the "Add to the mixtape" pill, plus the
    sparkle burst that fires when it's clicked. */
 .mixtape-card .pill {
