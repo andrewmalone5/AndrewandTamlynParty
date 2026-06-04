@@ -391,6 +391,86 @@ img {
 
 /* ─────────── Responsive ─────────── */
 
+/* Tablet & smaller: collapse to one column, cocktail above text. */
+@media (max-width: 900px) {
+  .hero-inner {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .event-details {
+    align-items: center;
+    order: 2;
+  }
+
+  .hero-image {
+    order: 1;
+    margin-bottom: 16px;
+  }
+
+  .hero-image img {
+    max-width: min(80vw, 500px);
+  }
+
+  .event-date {
+    white-space: normal;
+  }
+}
+
+/* Phone: cocktail goes behind the text, anchored to the right edge.
+   Hero fills the viewport below the 60px header; svh keeps the height
+   stable as the mobile URL bar collapses. */
+@media (max-width: 768px) {
+  .hero {
+    position: relative;
+    min-height: calc(100vh - 60px);
+    min-height: calc(100svh - 60px);
+    overflow: hidden;
+    padding: 24px;
+  }
+
+  .hero-inner {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+  }
+
+  /* Lift the text above the cocktail's stacking level. */
+  .event-details {
+    position: relative;
+    z-index: 2;
+  }
+
+  /* Cocktail anchored to the right, vertically centered. About 65%
+     visible (rightmost 35% overflows off-screen). */
+  .hero-image {
+    position: absolute;
+    inset: 0;
+    margin: 0;
+    z-index: 0;
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    overflow: visible;
+  }
+
+  .hero-image img {
+    height: 78vh;
+    height: 78svh;
+    width: auto;
+    max-width: none;
+    transform: translateX(35%);
+    opacity: 0.35;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero-image img {
+    opacity: 0.18;
+  }
+}
+
 /* ─────────── Gallery + Story ─────────── */
 
 .gallery-story {
