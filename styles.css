@@ -1471,6 +1471,7 @@ img {
 
 .faq-empty .pill {
   margin-top: 8px;
+  align-self: center;
 }
 
 /* Search */
