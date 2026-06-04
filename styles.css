@@ -701,7 +701,11 @@ img {
 }
 
 .mixtape-marquee-group {
+  display: inline-flex;
+  align-items: center;
   flex: 0 0 auto;
+  gap: 18px;
+  padding-right: 18px;
   font-family: var(--font-sans);
   font-weight: 700;
   font-size: 14.4px;
@@ -712,6 +716,14 @@ img {
   white-space: nowrap;
 }
 
+.mixtape-marquee-sep {
+  flex: 0 0 auto;
+  width: 12px;
+  height: 12px;
+  color: var(--color-cream);
+  opacity: 0.85;
+}
+
 @keyframes mixtape-marquee {
   from { transform: translateX(0); }
   to   { transform: translateX(-50%); }
@@ -719,6 +731,69 @@ img {
 
 @media (prefers-reduced-motion: reduce) {
   .mixtape-marquee-track {
+    animation: none;
+  }
+}
+
+/* Mixtape — hand-drawn squiggle under the headline. */
+.mixtape-title {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+}
+
+.mixtape-squiggle {
+  display: block;
+  width: clamp(180px, 28%, 280px);
+  height: 12px;
+  color: var(--color-cream);
+  opacity: 0.7;
+}
+
+/* Mixtape — small meta line under the embed (track count, etc). */
+.mixtape-meta {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-cream);
+  opacity: 0.7;
+}
+
+/* Mixtape — ambient pulse on the "Add to the mixtape" pill, plus the
+   sparkle burst that fires when it's clicked. */
+.mixtape-card .pill {
+  animation: mixtape-pill-pulse 2.4s ease-in-out infinite;
+}
+
+@keyframes mixtape-pill-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(242, 231, 210, 0.45); }
+  50%      { box-shadow: 0 0 0 9px rgba(242, 231, 210, 0); }
+}
+
+.mixtape-sparkle {
+  position: fixed;
+  width: 8px;
+  height: 8px;
+  margin-left: -4px;
+  margin-top: -4px;
+  background: var(--color-cream);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 1000;
+  animation: mixtape-sparkle 0.7s ease-out forwards;
+}
+
+@keyframes mixtape-sparkle {
+  0%   { opacity: 1; transform: translate(0, 0) scale(1); }
+  100% { opacity: 0; transform: translate(var(--dx, 0), var(--dy, 0)) scale(0.3); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mixtape-card .pill {
     animation: none;
   }
 }
